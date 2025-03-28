@@ -108,7 +108,3 @@ def new_resource(param: str) -> str:
     # 实现逻辑
     return result
 ```
-
-## 许可证
-
-MIT License
