@@ -86,9 +86,8 @@ uvx run server.py
 
 项目包含多个服务器实现：
 
-1. `server.py` - 使用FastMCP高级API的基础服务器
-2. `advanced_server.py` - 使用底层MCP API的高级服务器，支持更多功能
-3. `mcp_server.py` - 集成了Web服务功能的服务器，可以作为独立服务运行，也可以挂载到其他ASGI应用中
+1. `server.py` - mcp 服务启动入口
+2. `mcp_server.py` - mcp 服务实现
 
 ## 开发说明
 
