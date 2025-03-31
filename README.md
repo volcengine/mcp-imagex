@@ -47,12 +47,28 @@ VOLC_IMAGEX_SERVICE_ID=your_service_id
 
 ## 使用方法
 
-### 基础MCP服务器
+### 在 Mcp Client 中集成
 
-运行MCP服务器：
+在 mcp client 中配置 mcp 服务, (还没有发布包 暂时用 sh命令 运行 server 脚本，后续如果发布包 则用 uvx 运行 server 脚本)， 配置的 MCP JSON：
+
+```json
+{
+  "mcpServers": {
+    "volcengine": {
+      "command": "sh",
+      "args": ["/{your_path}/volcengine-mcp/scripts/run.sh"],
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
+```
+
+
+### 使用 @modelcontextprotocol/inspector 调试
 
 ```bash
-uvx run server.py
+sh ./scripts/debug.sh
 ```
 
 

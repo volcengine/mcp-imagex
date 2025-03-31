@@ -1,7 +1,10 @@
 [project]
-name = "veimagex-mcp"
+name = "volcengine-mcp"
 version = "0.1.0"
-description = "Add your description here"
+description = "VolcEngine MCP"
+authors = [
+    { name = "zhangjingtian.oana", email = "zhangjingtian.oana@bytedance.com" }
+]
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
