@@ -1,16 +1,17 @@
-# VeImageX MCP
+# Volcengine MCP
 
-火山引擎图片服务（ImageX）的Model Context Protocol (MCP) 服务器实现。
+Volcengine 的Model Context Protocol (MCP) Server 实现, 暂时实现了 ImageX 服务
 
 ## 项目简介
 
-VeImageX MCP是一个基于[Model Context Protocol](https://github.com/modelcontextprotocol/python-sdk)的服务器，它将火山引擎的ImageX服务集成到LLM模型上下文中，使大模型能够直接操作和管理图片资源。
+Volcengine MCP是一个基于[Model Context Protocol](https://github.com/modelcontextprotocol/python-sdk)的 MCP-server，
+它将 Volcengine 服务集成到LLM模型上下文中，使大模型能够直接操作和管理图片资源。
 
 ## 功能特点
 
-- 提供多种资源访问接口，便于LLM获取ImageX服务信息、图片资源等
-- 实现了多个ImageX功能的工具封装，包括上传图片，管理服务等
-- 提供多种预定义提示模板，帮助LLM更好地理解和使用ImageX功能
+- 提供多种资源访问接口，便于LLM获取Volcengine服务信息、图片资源等
+- 实现了多个Volcengine功能的工具封装，包括上传图片，管理服务等
+- 提供多种预定义提示模板，帮助LLM更好地理解和使用Volcengine功能
 - 支持多种运行模式：独立模式、Web服务模式
 - 提供高级和基础两种实现，满足不同场景需求
 
