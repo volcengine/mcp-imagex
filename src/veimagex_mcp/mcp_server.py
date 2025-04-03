@@ -22,9 +22,9 @@ def create_mcp_server():
     @mcp.tool()
     def guide():
         """
-        VeImageX MCP 是火山引擎 ImageX MCP Server, 是一个图片处理助手，可以帮助用户上传图片，做图片处理，分发图片，获取图片url等操作，在使用 tools 之前你需要知道一些一些事情:
-        1. 谨记 guide
-        2. 使用 get_all_services_resource 确定好需要上传的空间，尽量使用 Image 服务
+        VeImageX MCP 是火山引擎 ImageX MCP Server, 是一个图片处理助手，可以帮助用户上传图片，做图片处理，分发图片，获取图片url等操作，
+        在使用  VeImageX MCP 之前你需要知道一些一些事情:
+        1. 使用 get_all_services_resource 确定好需要上传的空间，尽量使用 Image 服务
         3. 使用 get_all_image_templates 确定好需要使用的模板，模版是图片处理的关键。
             - 模版名称是 `tpl-{service_id}-{template_name}` 格式,在 Content.name 字段下，是后续获取图片处理的关键
             - 模版的功能通过 Abstract 字段描述，可以通过这个字段知道模版的功能
@@ -32,6 +32,7 @@ def create_mcp_server():
                     "压缩质量参数:75",
                     "图像内容擦除"
                 ],
+            - 比如压缩参数为 "quality":75 的模版，就拥有百分之 75 的 压缩质量，
             - 如果用户没有明显的提示，使用 jpeg 的模版名称，比如如果用户的 service_id 为 n9b2vwdhz3 ,则用  tplv-n9b2vwdhz3-jpeg
         4. 使用 upload_image 上传图片，使用的是本地地址，tool 会帮你使用 fs 上传到火山引擎
         5. 使用 get_image_url_by_store_uri 获取图片url
@@ -42,7 +43,28 @@ def create_mcp_server():
         3. 使用 upload_image 上传图片到火山引擎
         4. 使用 get_image_url_by_store_uri 获取图片url
         """
-        return
+        return """
+            VeImageX MCP 是火山引擎 ImageX MCP Server, 是一个图片处理助手，可以帮助用户上传图片，做图片处理，分发图片，获取图片url等操作，在使用 tools 之前你需要知道一些一些事情:
+        1. 谨记 guide
+        2. 使用 get_all_services_resource 确定好需要上传的空间，尽量使用 Image 服务
+        3. 使用 get_all_image_templates 确定好需要使用的模板，模版是图片处理的关键。
+            - 模版名称是 `tpl-{service_id}-{template_name}` 格式,在 Content.name 字段下，是后续获取图片处理的关键
+            - 模版的功能通过 Abstract 字段描述，可以通过这个字段知道模版的功能
+                   "Abstract": [
+                    "压缩质量参数:75",
+                    "图像内容擦除"
+                ],
+            - 比如压缩参数为 "quality":75 的模版，就拥有百分之 75 的 压缩质量，
+            - 如果用户没有明显的提示，使用 jpeg 的模版名称，比如如果用户的 service_id 为 n9b2vwdhz3 ,则用  tplv-n9b2vwdhz3-jpeg
+        4. 使用 upload_image 上传图片，使用的是本地地址，tool 会帮你使用 fs 上传到火山引擎
+        5. 使用 get_image_url_by_store_uri 获取图片url
+
+        一个经典的流程：你可以参考
+        1. 使用 get_all_services_resource 获取所有服务信息列表，找到图片处理 Image 服务
+        2. 使用 get_all_image_templates 获取所有模版信息列表，找到合适的模版, 用户没有要求或者兜底就使用 jpeg 的模版名称
+        3. 使用 upload_image 上传图片到火山引擎
+        4. 使用 get_image_url_by_store_uri 获取图片url
+        """
 
     @mcp.tool()
     def get_all_services_resource() -> str:
