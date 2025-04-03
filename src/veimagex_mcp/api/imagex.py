@@ -7,4 +7,3 @@ class ImagexAPI(ImagexService):
             ak=os.getenv("VOLCENGINE_ACCESS_KEY"),
             sk=os.getenv("VOLCENGINE_SECRET_KEY")
         )
-        self.service_id = os.getenv("VOLCENGINE_IMAGE_SERVICE_ID")

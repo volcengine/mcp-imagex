@@ -2,9 +2,7 @@
 name = "volcengine-mcp"
 version = "0.1.0"
 description = "VolcEngine MCP"
-authors = [
-    { name = "zhangjingtian.oana", email = "zhangjingtian.oana@bytedance.com" }
-]
+authors = []
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [

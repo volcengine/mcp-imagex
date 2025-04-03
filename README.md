@@ -1,6 +1,6 @@
 # Volcengine MCP
 
-Volcengine 的Model Context Protocol (MCP) Server 实现, 暂时实现了 ImageX 服务
+Volcengine ImageX 的 Model Context Protocol (MCP) Server 实现
 
 ## 项目简介
 
@@ -36,15 +36,29 @@ uv pip install -e .
 cp .env.example .env 
 ```
 
-修改根目录的`.env.example`文件，并配置以下环境变量：
+修改根目录的`.env.example`文件，并配置以下环境变量
 
-```
+```shell
 VOLCENGINE_ACCESS_KEY=your_access_key
 VOLCENGINE_SECRET_KEY=your_secret_key
 VOLC_IMAGEX_SERVICE_ID=your_service_id
 ```
 
+或者在集成 Mcp Server 的时候 通过环境变量配置
+```json
+{
+  "mcpServers": {
+    "veimagex": {
+      // ...
+      "env": {
+        "VOLCENGINE_ACCESS_KEY": "Your Volcengine AK",
+        "VOLCENGINE_SECRET_KEY": "Your Volcengine SK"
+      }
+    }
+  }
+}
 
+```
 
 ## 使用方法
 
