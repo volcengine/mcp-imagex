@@ -3,10 +3,11 @@
 
 from src.veimagex_mcp.mcp_server import create_mcp_server
 from dotenv import load_dotenv
+import asyncio
 
 load_dotenv()
 
 mcp = create_mcp_server()
 
 if __name__ == "__main__":
-    mcp.run()
+    asyncio.run(mcp.run())
