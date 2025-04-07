@@ -1,18 +1,27 @@
 from mcp.server.fastmcp import FastMCP
 from .api.imagex import ImagexAPI
+import uuid
 
 
 def Error(message: str):
-    return 'API Error: ' + message
+    return "API Error: " + message
+
 
 def HandlerVolcResponse(response: dict):
-    if response and hasattr(response, 'ResponseMetadata') and response.ResponseMetadata and hasattr(response.ResponseMetadata, 'Error') and response.ResponseMetadata.Error:
+    if (
+        response
+        and hasattr(response, "ResponseMetadata")
+        and response.ResponseMetadata
+        and hasattr(response.ResponseMetadata, "Error")
+        and response.ResponseMetadata.Error
+    ):
         return Error(response.ResponseMetadata.Error.Message)
     return str(response)
 
+
 def create_mcp_server():
     mcp = FastMCP(
-        "VeImageX MCP", 
+        "VeImageX MCP",
         description="Volcengine(火山引擎) ImageX(图片服务) MCP , 你的图片处理存储分发助手",
     )
     imagex_service = ImagexAPI()
@@ -36,13 +45,16 @@ def create_mcp_server():
 
         3. Use `upload_image` to upload images, using local absolute paths - the tool will help you upload to Volcengine using fs. If you don't have this path, you try to find user's intent, or ask him.
 
-        4. Use `get_image_url_by_store_uri` to get the image URL
+        4. Use `generate_image_by_text` to generate an image based on the text.
+
+        5. Use `get_image_url_by_store_uri` to get the image URL
 
         A classic workflow you can reference:
         1. Use `get_all_services_resource` to get the list of all service information, find the Image processing service
         2. Use `get_all_image_templates` to get the list of all template information, find a suitable template. If user has no requirements or as a fallback, use the jpeg template name
         3. Use `upload_image` to upload the image to Volcengine
-        4. Use `get_image_url_by_store_uri` to get the image URL """
+        4. Use `generate_image_by_text` to generate an image based on the text.
+        5. Use `get_image_url_by_store_uri` to get the image URL"""
         return """use `guide` description to get how to use ImageX Mcp Server"""
 
     @mcp.tool()
@@ -65,14 +77,12 @@ def create_mcp_server():
             file_path: List of image file paths, use absolute path.
             service_id: Service ID, preferably upload to Image service if user has no specific requirements"""
         if not service_id:
-            return Error("service_id is required, please use get_all_services_resource to get the service_id") 
+            return Error(
+                "service_id is required, please use get_all_services_resource to get the service_id"
+            )
         if not file_path:
             return Error("file_path is required")
-        params = {
-            "ServiceId": service_id,
-            "SkipMeta": False,
-            "SkipCommit": False
-        }
+        params = {"ServiceId": service_id, "SkipMeta": False, "SkipCommit": False}
 
         result = imagex_service.upload_image(params, file_path)
 
@@ -86,13 +96,19 @@ def create_mcp_server():
         Args:
             service_id: The service ID to get templates for"""
         if not service_id:
-            return Error("service_id is required, please use get_all_services_resource to get the service_id") 
-        result = imagex_service.get_all_image_templates({"ServiceId": service_id, "Limit": 1000 })
+            return Error(
+                "service_id is required, please use get_all_services_resource to get the service_id"
+            )
+        result = imagex_service.get_all_image_templates(
+            {"ServiceId": service_id, "Limit": 1000}
+        )
 
         return str(HandlerVolcResponse(result))
 
     @mcp.tool()
-    def get_image_url_by_store_uri(service_id: str, domain: str = None, uri: str = None, tpl: str = None) -> str:
+    def get_image_url_by_store_uri(
+        service_id: str, domain: str = None, uri: str = None, tpl: str = None
+    ) -> str:
         """
         Get image access URL through URI and template information.
         1. URI is obtained from upload_image, template information is obtained from get_all_image_templates
@@ -105,7 +121,9 @@ def create_mcp_server():
             domain: The domain name for the URL
         """
         if not service_id:
-            return Error("service_id is required, please use get_all_services_resource to get the service_id")
+            return Error(
+                "service_id is required, please use get_all_services_resource to get the service_id"
+            )
         if not domain:
             return Error("domain is required")
         if not uri:
@@ -113,14 +131,49 @@ def create_mcp_server():
         if not tpl:
             return Error("tpl is required")
 
-        params = {
-            "ServiceId": service_id,
-            "Domain": domain,
-            "URI": uri,
-            "Tpl": tpl
-        }
+        params = {"ServiceId": service_id, "Domain": domain, "URI": uri, "Tpl": tpl}
 
         result = imagex_service.get_resource_url(params)
+        return str(HandlerVolcResponse(result))
+
+    @mcp.tool()
+    def generate_image_by_text(
+        service_id: str, domain: str = None, tpl: str = None, text: str = None
+    ) -> str:
+        """Generate an image based on the text.
+
+        Args:
+            service_id: The service ID
+            domain: The domain name for the URL
+            tpl: The template name to apply
+            text: The text to generate an image from
+        """
+        if not service_id:
+            return Error(
+                "service_id is required, please use get_all_services_resource to get the service_id"
+            )
+        if not domain:
+            return Error("domain is required")
+        if not tpl:
+            return Error("tpl is required")
+        if not text:
+            return Error("text is required")
+
+        query = {
+            "ServiceId": service_id,
+        }
+
+        params = {
+            "Domain": domain,
+            "Template": tpl,
+            "Overwrite": True,
+            "ReqJson": {"req_key": "high_aes_general_v20_L", "prompt": text},
+            "ModelAction": "CVProcess",
+            "ModelVersion": "2022-08-31",
+            "Outputs": [f"output_{uuid.uuid4().hex[:8]}"],
+        }
+
+        result = imagex_service.get_cv_text_generate_image(query, params)
         return str(HandlerVolcResponse(result))
 
     return mcp
