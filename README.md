@@ -1,10 +1,10 @@
-# Volcengine MCP
+# Volcengine ImageX MCP
 
 Volcengine ImageX 的 Model Context Protocol (MCP) Server 实现
 
 ## 项目简介
 
-Volcengine MCP是一个基于[Model Context Protocol](https://github.com/modelcontextprotocol/python-sdk)的 MCP-server，
+Volcengine ImageX MCP是一个基于[Model Context Protocol](https://github.com/modelcontextprotocol/python-sdk)的 MCP-server，
 它将 Volcengine 服务集成到LLM模型上下文中，使大模型能够直接操作和管理图片资源。
 
 ## 功能特点
@@ -12,8 +12,6 @@ Volcengine MCP是一个基于[Model Context Protocol](https://github.com/modelco
 - 提供多种资源访问接口，便于LLM获取Volcengine服务信息、图片资源等
 - 实现了多个Volcengine功能的工具封装，包括上传图片，管理服务等
 - 提供多种预定义提示模板，帮助LLM更好地理解和使用Volcengine功能
-- 支持多种运行模式：独立模式、Web服务模式
-- 提供高级和基础两种实现，满足不同场景需求
 
 ## 安装
 
@@ -41,7 +39,6 @@ cp .env.example .env
 ```shell
 VOLCENGINE_ACCESS_KEY=your_access_key
 VOLCENGINE_SECRET_KEY=your_secret_key
-VOLC_IMAGEX_SERVICE_ID=your_service_id
 ```
 
 或者在集成 Mcp Server 的时候 通过环境变量配置
