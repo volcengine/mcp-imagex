@@ -8,3 +8,4 @@ class ImagexAPI(ImagexService):
             ak=os.getenv("VOLCENGINE_ACCESS_KEY"),
             sk=os.getenv("VOLCENGINE_SECRET_KEY"),
         )
+        self.set_connection_timeout(30)
