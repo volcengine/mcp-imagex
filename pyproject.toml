@@ -8,9 +8,14 @@ requires-python = ">=3.11"
 dependencies = [
     "mcp>=1.6.0",
     "python-dotenv>=1.1.0",
-    "volcengine>=1.0.177",
+    "volcengine>=1.0.179",
     "starlette>=0.14.2",
     "typing-extensions>=4.0.0",
     "pydantic>=1.8.2",
-    "retry>=0.9.2"
+    "retry>=0.9.2",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.11.4",
 ]
