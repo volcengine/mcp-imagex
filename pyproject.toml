@@ -1,7 +1,7 @@
 [project]
-name = "volcengine-mcp"
+name = "veimagex-mcp"
 version = "0.1.0"
-description = "VolcEngine MCP"
+description = "VolcEngine ImageX MCP"
 authors = []
 readme = "README.md"
 requires-python = ">=3.11"
@@ -20,3 +20,14 @@ dev = [
     "pre-commit>=4.2.0",
     "ruff>=0.11.4",
 ]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+veimagex = "veimagex_mcp.cli:main"
+
+# [project.urls]
+# "Homepage" = "https://github.com/yourusername/veimagex-mcp"
+# "Bug Tracker" = "https://github.com/yourusername/veimagex-mcp/issues"

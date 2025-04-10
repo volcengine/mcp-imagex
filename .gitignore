@@ -2,5 +2,6 @@ __pycache__/
 /.venv/
 *.egg-info
 .env
-/scripts/
 .ruff_cache/
+/dist/
+/build/

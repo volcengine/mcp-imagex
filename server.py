@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 # coding:utf-8
 
-from src.veimagex_mcp.mcp_server import create_mcp_server
+"""
+传统入口点脚本，用于直接运行服务器。
+推荐使用 `uvx veimagex` 或安装后运行 `veimagex` 命令。
+"""
+
+from veimagex_mcp.mcp_server import create_mcp_server
 from dotenv import load_dotenv
 import asyncio
 
