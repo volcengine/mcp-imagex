@@ -27,8 +27,8 @@ def create_mcp_server():
         description="Volcengine(火山引擎) ImageX(图片服务) MCP , 你的图片处理存储分发助手",
     )
     imagex_service = ImagexAPI()
-    service_id = os.getenv("SERVICE_ID")
-    domain = os.getenv("DOMAIN")
+    service_id = imagex_service.service_id
+    domain = imagex_service.domain
 
     @mcp.tool()
     def guide():
