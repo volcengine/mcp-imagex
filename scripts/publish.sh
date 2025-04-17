@@ -22,7 +22,7 @@ uv pip install -e .
 
 # 测试 uvx 命令
 echo "测试 uvx 命令..."
-uvx --from . veimagex --help
+uvx --from . veimagex-mcp --help
 
 echo "发布到 PyPI"
 python -m twine upload dist/*

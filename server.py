@@ -3,7 +3,7 @@
 
 """
 传统入口点脚本，用于直接运行服务器。
-推荐使用 `uvx veimagex` 或安装后运行 `veimagex` 命令。
+推荐使用 `uvx veimagex-mcp` 或安装后运行 `veimagex-mcp` 命令。
 """
 
 from veimagex_mcp.mcp_server import create_mcp_server

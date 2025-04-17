@@ -1,6 +1,6 @@
 [project]
 name = "veimagex-mcp"
-version = "0.1.0"
+version = "0.1.2"
 description = "VolcEngine ImageX MCP"
 authors = []
 readme = "README.md"
@@ -26,7 +26,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project.scripts]
-veimagex = "veimagex_mcp.cli:main"
+veimagex-mcp = "veimagex_mcp.cli:main"
 
 # [project.urls]
 # "Homepage" = "https://github.com/yourusername/veimagex-mcp"
