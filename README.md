@@ -1,6 +1,6 @@
 # Volcengine ImageX MCP
 
-Volcengine ImageX 的 Model Context Protocol (MCP) Server 实现
+[Volcengine ImageX](https://t.zijieimg.com/MIURnXrQfvU/) 的 Model Context Protocol (MCP) Server 实现
 
 ## 项目简介
 
@@ -18,32 +18,11 @@ Volcengine ImageX MCP是一个基于[Model Context Protocol](https://github.com/
 ### 环境要求
 
 - Python 3.11+
-- 火山引擎账号及AccessKey/SecretKey
-
-### 安装依赖
-
-```bash
-uv venv
-source .venv/bin/activate
-uv pip install -e .
-```
+- [火山引擎账号](https://console.volcengine.cn/imagex?utm_source=tdgfha&utm_medium=oesbpg&utm_term=mcp-pr-01&utm_campaign=&utm_content=ImageX)及AccessKey/SecretKey
 
 ### 环境变量配置
 
-```
-cp .env.example .env 
-```
-
-修改根目录的`.env.example`文件，并配置以下环境变量
-
-```shell
-VOLCENGINE_ACCESS_KEY=your_access_key
-VOLCENGINE_SECRET_KEY=your_secret_key
-SERVICE_ID=your_service_id
-DOMAIN=your_domain
-```
-
-或者在集成 Mcp Server 的时候 通过环境变量配置
+在集成 Mcp Server 时配置
 ```json
 {
   "mcpServers": {
@@ -63,38 +42,24 @@ DOMAIN=your_domain
 
 ## 使用方法
 
-### 在 Mcp Client 中集成
+在 mcp client 中配置 mcp 服务， 配置的 MCP JSON：
 
-在 mcp client 中配置 mcp 服务, (还没有发布包 暂时用 sh命令 运行 server 脚本，后续如果发布包 则用 uvx 运行 server 脚本)， 配置的 MCP JSON：
-
-#### 本地开发
-```json
-{
-  "mcpServers": {
-    "volcengine": {
-      "command": "uvx",
-      "args": ["--from", "YOUR_PROJECT_ABSOLUTE_PATH", "veimagex"],
-    }
-  }
-}
-```
-
-#### Pypi
 
 ```json
 {
   "mcpServers": {
     "volcengine": {
+      "disabled": false,
       "command": "uvx",
-      "args": ["veimagex"],
+      "args": ["veimagex-mcp"],
+      "env": {
+        "VOLCENGINE_ACCESS_KEY": "",
+        "VOLCENGINE_SECRET_KEY": "",
+        "SERVICE_ID": "",
+        "DOMAIN": ""
+      },
+      "transportType": "stdio"
     }
   }
 }
-```
-
-
-### 使用 @modelcontextprotocol/inspector 调试
-
-```bash
-sh ./scripts/debug.sh
 ```

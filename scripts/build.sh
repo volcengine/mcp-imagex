@@ -22,4 +22,4 @@ uv pip install -e .
 
 # 测试 uvx 命令
 echo "测试 uvx 命令..."
-uvx --from . veimagex
+uvx --from . veimagex-mcp
