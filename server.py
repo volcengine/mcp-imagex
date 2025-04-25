@@ -7,12 +7,13 @@
 """
 
 from veimagex_mcp.mcp_server import create_mcp_server
+from veimagex_mcp.mcp_extend import create_api_mcp_server
 from dotenv import load_dotenv
 import asyncio
 
 load_dotenv()
 
 mcp = create_mcp_server()
-
+create_api_mcp_server(mcp)
 if __name__ == "__main__":
     asyncio.run(mcp.run())
