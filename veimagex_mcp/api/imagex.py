@@ -1,3 +1,6 @@
+ # Copyright 2025 Beijing Volcano Engine Technology Ltd.
+ # SPDX-License-Identifier: Apache-2.0
+ 
 import os
 from volcengine.imagex.v2.imagex_service import ImagexService
 from .config import *

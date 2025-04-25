@@ -1,3 +1,6 @@
+ # Copyright 2025 Beijing Volcano Engine Technology Ltd.
+ # SPDX-License-Identifier: Apache-2.0
+ 
 note = {
     "get_domain_config": """Args:params: A JSON structure
      DomainName (String): 是  域名，您可以通过调用 GetServiceDomains 获取当前服务下所有域名。 
