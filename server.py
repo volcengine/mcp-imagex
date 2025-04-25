@@ -1,3 +1,5 @@
+# Copyright 2025 Beijing Volcano Engine Technology Ltd.
+# SPDX-License-Identifier: Apache-2.0
 #!/usr/bin/env python3
 # coding:utf-8
 

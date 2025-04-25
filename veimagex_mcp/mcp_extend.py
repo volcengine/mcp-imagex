@@ -1,3 +1,6 @@
+ # Copyright 2025 Beijing Volcano Engine Technology Ltd.
+ # SPDX-License-Identifier: Apache-2.0
+ 
 from .api.imagex import ImagexAPI
 from .note import note
 from .utils.response import HandlerVolcResponse
