@@ -13,7 +13,7 @@ class ImagexAPI(ImagexService):
             sk=os.getenv("VOLCENGINE_SECRET_KEY"),
         )
         self.api_info = {**self.api_info, **api_info}
-
+        self.service_info.header["x-tt-mcp"] = 'volc'
         self.service_id = os.getenv("SERVICE_ID")
         self.domain = os.getenv("DOMAIN")
         self.set_connection_timeout(100)

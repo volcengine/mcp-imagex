@@ -1,6 +1,6 @@
 [project]
 name = "veimagex-mcp"
-version = "0.1.4"
+version = "0.1.5"
 description = "VolcEngine ImageX MCP"
 authors = []
 readme = "README.md"
